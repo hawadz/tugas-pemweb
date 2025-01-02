@@ -2,26 +2,24 @@
 
 namespace Database\Seeders;
 
+// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
-class CategoriesSeeder extends Seeder
+class DatabaseSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
-    public function run(): void
-    {
-        DB::table('categories')->insert([
-            [
-                'name' => 'Manga',
-                'created_at' => now(),
-
-            ],
-            [
-                'name' => 'Novel',
-                'created_at' => now(),
-            ]
-        ]);
-    }
+  /**
+   * Seed the application's database.
+   */
+  public function run(): void
+  {
+    $this->call([
+      RoleSeeder::class,
+      UserSeeder::class,
+      CastSeeder::class,
+      GenreSeeder::class,
+      MovieSeeder::class,
+      CastMovieSeeder::class,
+      ReviewSeeder::class
+    ]);
+  }
 }
