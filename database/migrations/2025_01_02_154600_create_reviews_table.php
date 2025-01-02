@@ -14,8 +14,8 @@ return new class extends Migration {
       $table->uuid('id')->primary();
       $table->text('review');
       $table->integer('rating');
-      $table->foreignUuid('user_id')->constrained();
-      $table->foreignUuid('movie_id')->constrained();
+      $table->foreignUuid('user_id')->references('id')->on('users');
+      $table->foreignid('movie_id')->references('id')->on('movies');
       $table->timestamps();
     });
   }
@@ -28,3 +28,4 @@ return new class extends Migration {
     Schema::dropIfExists('reviews');
   }
 };
+

@@ -15,7 +15,7 @@ return new class extends Migration {
       $table->string('name'); // Menambahkan field 'name'
       $table->timestamps();
     });
-  }
+  } 
 
   /**
    * Reverse the migrations.

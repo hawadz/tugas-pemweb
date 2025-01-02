@@ -10,9 +10,14 @@ return new class extends Migration {
    */
   public function up(): void
   {
-    Schema::create('cast_movies', function (Blueprint $table) {
-      $table->foreignUuid('movie_id')->references('id')->on('movies')->onDelete('cascade');
-      $table->foreignUuid('cast_id')->references('id')->on('casts')->onDelete('cascade');
+    Schema::create('cast-movies', function (Blueprint $table) {
+      $table->uuid('id')->primary();
+      $table->string('title');
+      $table->text('synopsis');
+      $table->string('poster')->nullable();
+      $table->string('year');
+      $table->boolean('available');
+      $table->foreignUuid('genre_id')->constrained();
       $table->timestamps();
     });
   }
@@ -22,6 +27,6 @@ return new class extends Migration {
    */
   public function down(): void
   {
-    Schema::dropIfExists('cast_movies');
+    Schema::dropIfExists('movies');
   }
 };
